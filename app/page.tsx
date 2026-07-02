@@ -135,7 +135,7 @@ export default function ZescoCalculator() {
       <nav className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-8 shrink-0">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-sm">Z</div>
-          <span className="text-xl font-bold text-slate-800">ZescoUnit<span className="text-green-600">Pro</span></span>
+          <span className="text-xl font-bold text-slate-800">Zesco Unit <span className="text-green-600">Calculator</span></span>
         </div>
         <div className="flex items-center gap-6">
           <div className="hidden sm:flex flex-col items-end">
