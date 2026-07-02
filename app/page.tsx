@@ -250,9 +250,6 @@ export default function ZescoCalculator() {
               </label>
             </div>
             
-            <button className="w-full py-4 mt-2 bg-white text-green-700 font-bold rounded-xl hover:bg-green-50 transition-colors shadow-sm flex items-center justify-center gap-2">
-               GENERATE TOKEN PREVIEW
-            </button>
           </div>
         </div>
 
