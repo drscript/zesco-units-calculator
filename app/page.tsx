@@ -130,7 +130,7 @@ export default function ZescoCalculator() {
   const currentScale = TARIFF_SCHEDULES[tariffType].visualScale;
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col font-sans overflow-y-auto sm:overflow-hidden">
+    <div className="min-h-dvh bg-[#F8FAFC] flex flex-col font-sans overflow-y-auto lg:overflow-hidden">
       {/* Top Navigation Bar */}
       <nav className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-8 shrink-0">
         <div className="flex items-center gap-3">
@@ -157,7 +157,7 @@ export default function ZescoCalculator() {
           <button 
             key={key} 
             onClick={() => setTariffType(key)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap ${tariffType === key ? 'bg-green-600 text-white shadow-sm' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
+            className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap ${tariffType === key ? 'bg-green-600 text-white shadow-sm' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
           >
             {TARIFF_SCHEDULES[key].name}
           </button>
@@ -165,19 +165,20 @@ export default function ZescoCalculator() {
       </div>
 
       {/* Main Content Grid */}
-      <main className="p-4 sm:p-6 pt-2 sm:pt-4 grid grid-cols-1 md:grid-cols-12 md:grid-rows-6 gap-4 flex-grow max-w-[1200px] w-full mx-auto">
+      <main className="p-4 sm:p-6 pt-2 sm:pt-4 grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 flex-grow max-w-[1200px] w-full mx-auto">
 
         {/* Input Section: Amount */}
-        <div className="md:col-span-4 md:row-span-2 bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm mt-2">
+        <div className="lg:col-span-4 lg:row-span-2 bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm mt-2">
           <div>
             <label className="text-xs font-bold text-slate-500 uppercase tracking-widest">Amount to Purchase</label>
             <div className="mt-4 flex items-baseline">
               <span className="text-2xl font-semibold text-slate-400 mr-2">K</span>
-              <input 
-                type="number" 
+              <input
+                type="number"
+                inputMode="decimal"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="text-5xl font-bold text-slate-900 w-full outline-none bg-transparent placeholder-slate-200"
+                className="text-4xl sm:text-5xl font-bold text-slate-900 w-full outline-none bg-transparent placeholder-slate-200"
                 placeholder="0.00"
                 min="0"
                 step="0.01"
@@ -187,20 +188,21 @@ export default function ZescoCalculator() {
           <div className="flex gap-2 mt-6">
             <button onClick={() => setAmount('100')} className="flex-1 py-2 bg-slate-50 rounded-lg border border-slate-200 text-sm font-semibold hover:bg-slate-100 transition-colors text-slate-700">K100</button>
             <button onClick={() => setAmount('200')} className="flex-1 py-2 bg-slate-50 rounded-lg border border-slate-200 text-sm font-semibold hover:bg-slate-100 transition-colors text-slate-700">K200</button>
-            <button onClick={() => setAmount('500')} className="flex-1 py-2 bg-green-50 border border-green-200 text-green-700 text-sm font-semibold hover:bg-green-100 transition-colors">K500</button>
+            <button onClick={() => setAmount('500')} className="flex-1 py-2 bg-green-50 rounded-lg border border-green-200 text-green-700 text-sm font-semibold hover:bg-green-100 transition-colors">K500</button>
           </div>
         </div>
 
         {/* Input Section: History */}
-        <div className="md:col-span-4 md:row-span-2 bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm md:mt-2">
+        <div className="lg:col-span-4 lg:row-span-2 bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm lg:mt-2">
           <div>
             <label className="text-xs font-bold text-slate-500 uppercase tracking-widest">Previous Monthly Units</label>
             <div className="mt-4 flex items-baseline">
-              <input 
+              <input
                 type="number"
+                inputMode="decimal"
                 value={previousUnits}
                 onChange={(e) => setPreviousUnits(e.target.value)}
-                className="text-5xl font-bold text-slate-900 w-full outline-none bg-transparent placeholder-slate-200"
+                className="text-4xl sm:text-5xl font-bold text-slate-900 w-full outline-none bg-transparent placeholder-slate-200"
                 placeholder="0"
                 min="0"
                 step="0.1"
@@ -212,7 +214,7 @@ export default function ZescoCalculator() {
         </div>
 
         {/* Primary Result Card */}
-        <div className="md:col-span-4 md:row-span-6 bg-green-600 rounded-3xl p-6 sm:p-8 flex flex-col text-white shadow-lg shadow-green-200/50 md:mt-2">
+        <div className="lg:col-span-4 lg:row-span-6 bg-green-600 rounded-3xl p-6 sm:p-8 flex flex-col text-white shadow-lg shadow-green-200/50 lg:mt-2">
           <div className="flex justify-between items-start mb-8">
             <div className="bg-white/20 p-3 rounded-xl">
               <Zap className="w-6 h-6" fill="currentColor" />
@@ -255,7 +257,7 @@ export default function ZescoCalculator() {
         </div>
 
         {/* Tariff Band Visualizer */}
-        <div className="md:col-span-8 md:row-span-2 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between">
+        <div className="lg:col-span-8 lg:row-span-2 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between">
           <div className="flex justify-between items-end mb-4">
             <h3 className="font-bold text-slate-800">Tariff Consumption Bands</h3>
             <div className="hidden sm:flex gap-3 text-xs">
@@ -319,7 +321,7 @@ export default function ZescoCalculator() {
         </div>
 
         {/* Breakdown of Costs */}
-        <div className="md:col-span-5 md:row-span-2 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between">
+        <div className="lg:col-span-5 lg:row-span-2 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between">
           <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
             <ReceiptText className="w-4 h-4 text-slate-400" />
             Cost Breakdown
@@ -371,7 +373,7 @@ export default function ZescoCalculator() {
         </div>
 
         {/* Support Info */}
-        <div className="md:col-span-3 md:row-span-2 bg-slate-800 rounded-2xl p-6 text-white shadow-sm flex flex-col justify-between">
+        <div className="lg:col-span-3 lg:row-span-2 bg-slate-800 rounded-2xl p-6 text-white shadow-sm flex flex-col justify-between">
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400">Pro Tip</h4>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed">
